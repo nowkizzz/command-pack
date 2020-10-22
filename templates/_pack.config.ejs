@@ -1,0 +1,31 @@
+const commandPackConfig = {
+  // 压缩的文件夹名
+  distName: '<%= serverOption.distName %>',
+  // 压缩模式：zip or tar.gz
+  packType: '<%= serverOption.packType %>',
+  // 压缩包名称
+  projectName: '<%= serverOption.projectName -%>',
+  <%_ if (serverOption.packType === 'zip') { -%>
+  // 压缩包名称是否添加添加时间标识  
+  isAddDateTip: <%= serverOption.isAddDateTip %>, 
+  <%_ } else if(serverOption.packType === 'targz') { -%>
+  // 是否套多一层文件夹压缩 
+  isAddMapHeader: <%= serverOption.isAddMapHeader %>,
+  <%_ } -%>
+  <%_ if (serverOption.isToServer) { -%>
+  // 是否发送到服务器
+  isToServer: '<%= serverOption.isToServer %>',  
+  // 服务器IP地址
+  serverHost: '<%= serverOption.serverHost %>',
+  // 服务器账号
+  username: '<%= serverOption.username %>',
+  // 服务器密码
+  password: '<%= serverOption.password %>',
+  // 服务器端口号
+  port: '<%= serverOption.port %>',
+  // 服务器前端目录：(最后需加上斜杠)
+  serverPath: '<%= serverOption.serverPath %>',
+  <% } -%>
+};
+
+module.exports = commandPackConfig

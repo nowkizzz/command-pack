@@ -1,0 +1,28 @@
+{
+  "name": "command-pack",
+  "version": "1.0.0",
+  "description": "命令行压缩工具，可压缩zip和tar.gz，targz包可上传到服务器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "command-pack": "./index.js"
+  },
+  "author": "nowkizzz",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "http://192.168.200.38:8081/nexus/content/repositories/npmjs_ava/"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "dayjs": "^1.9.3",
+    "ejs": "^3.1.5",
+    "inquirer": "^7.3.3",
+    "jszip": "^3.5.0",
+    "node-ssh": "^10.0.2",
+    "tar-fs": "^2.1.0",
+    "winston": "^3.3.3"
+  }
+}
