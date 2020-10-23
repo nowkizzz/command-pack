@@ -23,3 +23,4 @@ dist.rar
 dist.zip
 logs/*
 !logs/.gitkeep
+package-lock.json

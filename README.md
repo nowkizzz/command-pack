@@ -1,5 +1,7 @@
 ## 前端压缩包命令行工具
 
+[中文文档](https://github.com/nowkizzz/command-pack#readme)
+
 ### 任务处理
 - [x] zip,tar.gz压缩
 - [x] 添加日志功能
