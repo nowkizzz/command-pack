@@ -1,6 +1,6 @@
 {
   "name": "pack-command",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "命令行压缩工具，可压缩zip和tar.gz，targz包可上传到服务器",
   "main": "index.js",
   "scripts": {
