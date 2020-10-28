@@ -5,8 +5,16 @@ const fs = require("fs");
 const logger = require("../utils/logger");
 const currentPath = process.cwd();
 const { configFile } = require('../config/index');
-const pkg = require(currentPath + "/package.json");
+let pkg = {}
 const isHavaBuildPack = fs.existsSync(`${currentPath}/${configFile}`);
+
+
+try {
+  pkg = require(currentPath + "/package.json");
+} catch(e) {
+
+}
+
 
 // 执行指令
 function packAllOptions() {
@@ -57,6 +65,16 @@ function packOptions() {
         name: "distName",
         message: "请输入需要压缩的文件夹名：",
         default: "dist",
+        validate: function (input) {
+          let done = this.async()
+          let fillPath = currentPath + '/' + input
+          let file = fs.statSync(fillPath)
+          if (!file.isDirectory()) {
+              done(`${input}不是当前目录下的文件夹`)
+              return;
+          }
+          done(null, true)
+        }
       },
       {
         type: "list",
@@ -77,9 +95,8 @@ function packOptions() {
         type: "input",
         name: "projectName",
         message: "请输入压缩包名",
-        default: pkg ? pkg.name : "web",
+        default: pkg.name ? pkg.name.trim() : "web",
         when: (answers) => answers.packType === "zip",
-
       },
       {
         type: "input",

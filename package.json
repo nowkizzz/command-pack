@@ -1,10 +1,13 @@
 {
   "name": "pack-command",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "命令行压缩工具，可压缩zip和tar.gz，targz包可上传到服务器",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "first-log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "bin": {
     "pack-command": "./index.js"
@@ -19,12 +22,34 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
+    "commitizen": "^4.2.2",
+    "commitlint": "^11.0.0",
+    "conventional-changelog-cli": "^2.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.9.3",
     "ejs": "^3.1.5",
+    "husky": "^4.3.0",
     "inquirer": "^7.3.3",
     "jszip": "^3.5.0",
+    "lint-staged": "^10.5.0",
     "node-ssh": "^10.0.2",
     "tar-fs": "^2.1.0",
     "winston": "^3.3.3"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

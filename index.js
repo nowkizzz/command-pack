@@ -3,14 +3,19 @@ const chalk = require("chalk");
 const fs = require("fs");
 const path = require('path')
 const packOptions = require("./src/packOptions");
-const pkg = require("./package.json");
 const executeOptions = require('./src/executeOptions')
 const { program } = require("commander");
 const { configFile } = require('./config/index')
 const currentPath = process.cwd();
 const isHaveDefaultDeployConfig = fs.existsSync(`${currentPath}/${configFile}`);
+let pkg = {}
+try {
+  pkg = require("./package.json");
+} catch(e) {
+ // console.log(e)
+}
 program
-  .version(pkg.version)
+  .version(pkg.version || '1.0.0')
   .option("-a, --all", "获取全部参数")
   .option("-c, --config <configPath>", "压缩的js配置文件")
   .option(
