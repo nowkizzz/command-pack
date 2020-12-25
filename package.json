@@ -18,6 +18,10 @@
     "type": "git",
     "url": "git+https://github.com/nowkizzz/command-pack.git"
   },
+  "keywords": [
+    "commank",
+    "pack"
+  ],
   "homepage": "https://github.com/nowkizzz/command-pack#readme",
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
